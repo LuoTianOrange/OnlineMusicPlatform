@@ -1,0 +1,33 @@
+a {
+  font-weight: 500;
+  color: #313131;
+  text-decoration: inherit;
+}
+
+a:hover {
+  color: #313131;
+}
+
+
+#app {
+  height: 100%;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0;
+}
+
+@font-face {
+  font-family: MiSans-Normal;
+  src: url("../src/assets/fonts/MiSans-Normal.otf");
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "MiSans-Normal";
+}
+
+/*滚动条隐藏*/
+::-webkit-scrollbar {
+  display: none;
+}
