@@ -1,14 +1,18 @@
 <template>
   <div class="h-full w-screen flex justify-between flex-col items-center">
-    <div class="flex justify-start flex-col items-center">
-      <el-carousel :interval="14000" indicator-position="outside" type="card" class="w-[1000px] mt-5" height="180">
+    <div class="w-screen flex justify-start flex-col items-center">
+      <el-carousel :interval="4000" indicator-position="outside" autoplay type="card" class="w-[1000px] mt-5" height="180">
         <el-carousel-item v-for="(item,i) in images" :key="i" class="bg-gray-400 flex justify-center">
           <el-image class="aspect-auto object-scale-down object-top w-full h-full" :src="item"></el-image>
         </el-carousel-item>
       </el-carousel>
-      <div class="text-3xl font-bold my-2">歌单</div>
-      <div class="grid grid-cols-4 gap-4 grid-flow-row-dense max-w-[1400px]">
-        <CatBox v-for="i in 10" class="my-2" :index="i"></CatBox>
+      <div class="text-3xl font-bold my-4">精选推荐</div>
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5 grid-flow-row max-w-[1300px] w-full">
+        <CatBox v-for="i in 10" class="my-2 w-full" :index="i"></CatBox>
+      </div>
+      <div class="text-3xl font-bold my-4">推荐歌单</div>
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5 grid-flow-row max-w-[1300px] w-full">
+        <CatBox v-for="i in 10" class="my-2 w-full" :index="i"></CatBox>
       </div>
     </div>
     <FooterNav></FooterNav>
