@@ -7,6 +7,8 @@ import ElementPlus from 'element-plus'
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 import router from '../src/routers/index'
 import pinia from '../src/stores/index'
+import {install} from '@icon-park/vue-next/es/all';
+import '@icon-park/vue-next/styles/index.css';
 
 const app = createApp(App)
 app.use(ElementPlus).use(router).use(pinia)
