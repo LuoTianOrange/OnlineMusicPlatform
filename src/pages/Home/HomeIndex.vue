@@ -7,11 +7,11 @@
         </el-carousel-item>
       </el-carousel>
       <div class="text-3xl font-bold my-4">精选推荐</div>
-      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5 grid-flow-row max-w-[1300px] w-full">
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 grid-flow-row max-w-[1300px] w-full">
         <CatBox v-for="i in images" class="my-2 w-full" :image="i"></CatBox>
       </div>
       <div class="text-3xl font-bold my-4">推荐歌单</div>
-      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5 grid-flow-row max-w-[1300px] w-full">
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 grid-flow-row max-w-[1300px] w-full">
         <CatBox v-for="i in images" class="my-2 w-full" :image="i"></CatBox>
       </div>
     </div>
@@ -20,7 +20,7 @@
 
 <script setup>
 
-import CatBox from "@/components/CatBox.vue";
+import CatBox from "@/components/Home/CatBox.vue";
 import { ref,onMounted } from "vue";
 //获取musicHover中的图片
 const importAll = import.meta.glob('/src/assets/images/musicHover/*.{jpg,jpeg,png,gif}');

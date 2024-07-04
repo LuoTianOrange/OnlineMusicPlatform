@@ -1,9 +1,9 @@
 <script>
 import { RouterView } from "vue-router";
 import { KeepAlive } from "vue";
-import HeadNav from "./components/HeadNav.vue";
-import Home from "./pages/Home/HomeIndex.vue";
-import FooterNav from "@/components/FooterNav.vue";
+import HeadNav from "@/components/Home/HeadNav.vue";
+import Home from "@/pages/Home/HomeIndex.vue";
+import FooterNav from "@/components/Home/FooterNav.vue";
 export default {
   name: "App",
   components: {
