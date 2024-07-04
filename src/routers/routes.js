@@ -18,6 +18,12 @@ const routes = [
         title: '歌手',
         component: () => import('../pages/Singer/SingerIndex.vue'),
     },
+    {
+        path: '/song/:img',
+        name: 'Song',
+        title: '歌曲',
+        component: () => import('../pages/SongList/SongPage.vue'),
+    }
 ]
 
 export default routes
