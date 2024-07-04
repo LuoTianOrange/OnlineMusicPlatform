@@ -2,12 +2,14 @@
 import { RouterView } from "vue-router";
 import { KeepAlive } from "vue";
 import HeadNav from "./components/HeadNav.vue";
-import Home from "./pages/Home/Index.vue";
+import Home from "./pages/Home/HomeIndex.vue";
+import FooterNav from "@/components/FooterNav.vue";
 export default {
   name: "App",
   components: {
     Home,
     HeadNav,
+    FooterNav,
     RouterView,
     KeepAlive,
   },
@@ -22,6 +24,7 @@ export default {
         <component :is="Component" />
       </keep-alive>
     </router-view>
+    <FooterNav></FooterNav>
   </div>
 </template>
 
