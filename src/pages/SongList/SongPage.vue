@@ -5,8 +5,7 @@
         <el-image :src="coverImgUrl" class="h-[240px] w-[240px] rounded-lg flex-shrink-0"></el-image>
         <div class="flex flex-col ml-5">
           <div class="text-2xl font-semibold">{{ name }}</div>
-          <div class="text-base">{{ description }}</div>
-          <audio src=""></audio>
+          <div class="text-base mt-3">{{ description }}</div>
         </div>
       </div>
       <el-tabs v-model="activeName" :stretch=true class="w-full">
@@ -68,7 +67,7 @@ onMounted(async () => {
     .catch((err) => {
       console.log(err);
     })
-  const getSongList = await axios.get(`http://localhost:3000/playlist/track/all?id=${id}&limit=30`)
+  const getSongList = await axios.get(`http://localhost:3000/playlist/track/all?id=${id}&limit=100`)
     .then((res) => {
       res.data.songs.forEach(song => {
         const songname = song.name;

@@ -6,6 +6,7 @@
         <!--歌曲封面，歌名，歌手名，收藏，评论区，分享，下载-->
         <el-image class="w-[50px] h-[50px] object-cover overflow-hidden rounded-[50%]" src="./Sampleheader.png"
           alt=""></el-image>
+        <audio class="hidden"></audio>
         <div class="ml-[20px]">
           <div>
             <span>歌名</span>
