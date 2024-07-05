@@ -73,17 +73,16 @@ onMounted(async () => {
       res.data.songs.forEach(song => {
         const songname = song.name;
         const formattedDt = formatDuration(song.dt);
-        const artists = song.ar.map(artist => artist.name).join(', '); // 将 artists 转换为一个由艺术家名字组成的字符串
-        // 创建一个新的对象，并将 songname，formattedDt 和 artists 添加到这个对象中
+        const artists = song.ar.map(artist => artist.name).join(', '); 
+
         const songObject = {
           songname,
           formattedDt,
           artists
         };
-        // 将这个对象添加到 songList 中
+
         songList.value.push(songObject);
       });
-      console.log(songList.value); // 打印 songList
     })
 })
 

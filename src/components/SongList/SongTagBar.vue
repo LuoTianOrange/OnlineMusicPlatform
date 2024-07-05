@@ -11,11 +11,13 @@ import { ref } from 'vue'
 const props = defineProps({
     tag: Array
 })
+const emit = defineEmits(['select-tag'])
 //是否选择
 const selectTag = (selectedTag) => {
     props.tag.forEach(tag => {
         tag.selected = false;
     });
     selectedTag.selected = true;
+    emit('select-tag', selectedTag.name);
 }
 </script>

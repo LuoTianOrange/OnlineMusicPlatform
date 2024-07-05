@@ -26,6 +26,7 @@ const goToSongPage = (songData) => {
     }
   });
 }
+//刷新页面
 const newLink = () => {
   router.go(0);
 }
