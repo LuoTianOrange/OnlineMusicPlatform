@@ -19,7 +19,7 @@ const routes = [
         component: () => import('../pages/Singer/SingerIndex.vue'),
     },
     {
-        path: '/song/:img',
+        path: '/song/:id',
         name: 'Song',
         title: '歌曲',
         component: () => import('../pages/SongList/SongPage.vue'),
