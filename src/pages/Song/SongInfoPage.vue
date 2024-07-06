@@ -43,6 +43,18 @@
             <div class="flex flex-col mt-20 w-full">
                 <div class="w-full py-1">全部评论</div>
             </div>
+            <div v-for="item in commentData" :key="item.comments[0].commentId">
+            <div v-for="comment in item.comments" :key="comment.commentId"
+              class="flex py-[20px] border-b border-stone-400 ">
+              <el-image :src="comment.user.avatarUrl"
+                class="flex-shrink-0 w-[50px] h-[50px] object-cover rounded-[50%] overflow-hidden"></el-image>
+              <div class="ml-5">
+                <div>{{ comment.user.nickname }}</div>
+                <div>{{ comment.content }}</div>
+                <div class="text-[14px] text-stone-400">{{ comment.timeStr }}</div>
+              </div>
+            </div>
+          </div>
         </div>
     </div>
 </template>
@@ -58,7 +70,8 @@ const id = route.params.id;
 const songData = ref([])
 //歌词信息
 let lyricData = ref([])
-
+//评论信息
+const commentData = ref([]);
 console.log(id);
 
 // 将毫秒数转换为 mm:ss 格式
@@ -100,6 +113,22 @@ onMounted(async () => {
         .then((res) => {
             lyricData.value = res.data.lrc.lyric
             console.log("lyricData", lyricData.value, typeof lyricData.value);
+            console.log(res);
+        })
+        .catch((err) => {
+            console.log(err);
+        })
+    //获取歌曲评论
+    const getComment = await axios.get(`http://localhost:3000/comment/music?id=${id}`)
+        .then((res) => {
+            const comments = res.data.comments;
+            const hotcomments = res.data.hotComments;
+            const commentObject = {
+                comments,
+                hotcomments,
+            };
+            commentData.value.push(commentObject);
+            console.log("commentData", commentData.value);
             console.log(res);
         })
         .catch((err) => {

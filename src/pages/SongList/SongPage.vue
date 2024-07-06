@@ -21,10 +21,17 @@
           </el-table>
         </el-tab-pane>
         <el-tab-pane label="评论" name="评论">
-          <div>全部评论</div>
+          <div class="flex items-end">
+            <div>全部评论</div>
+            <div class="ml-[5px] text-[12px] text-gray-400" v-if="commentData[0] && commentData[0].comments">
+              共{{ commentData[0].comments.length }}条评论
+            </div>
+          </div>
           <div v-for="item in commentData" :key="item.comments[0].commentId">
-            <div v-for="comment in item.comments" :key="comment.commentId" class="flex py-[20px] border-b border-stone-400 ">
-              <el-image :src="comment.user.avatarUrl" class="flex-shrink-0 w-[50px] h-[50px] object-cover rounded-[50%] overflow-hidden"></el-image>
+            <div v-for="comment in item.comments" :key="comment.commentId"
+              class="flex py-[20px] border-b border-stone-400 ">
+              <el-image :src="comment.user.avatarUrl"
+                class="flex-shrink-0 w-[50px] h-[50px] object-cover rounded-[50%] overflow-hidden"></el-image>
               <div class="ml-5">
                 <div>{{ comment.user.nickname }}</div>
                 <div>{{ comment.content }}</div>
