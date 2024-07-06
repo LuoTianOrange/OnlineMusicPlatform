@@ -43,12 +43,12 @@
             <div class="flex flex-col mt-20 w-full">
                 <div class="w-full py-1">全部评论</div>
             </div>
-            <div v-for="item in commentData" :key="item.comments[0].commentId">
+            <div v-for="item in commentData" :key="item.comments[0].commentId" class="w-full">
             <div v-for="comment in item.comments" :key="comment.commentId"
-              class="flex py-[20px] border-b border-stone-400 ">
+              class="flex py-[20px] border-b border-stone-400 w-full">
               <el-image :src="comment.user.avatarUrl"
                 class="flex-shrink-0 w-[50px] h-[50px] object-cover rounded-[50%] overflow-hidden"></el-image>
-              <div class="ml-5">
+              <div class="ml-5 w-full">
                 <div>{{ comment.user.nickname }}</div>
                 <div>{{ comment.content }}</div>
                 <div class="text-[14px] text-stone-400">{{ comment.timeStr }}</div>
@@ -64,6 +64,10 @@ import axios from 'axios';
 import { onMounted, ref, computed } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { Play, Plus, FolderPlus, ShareOne, Download } from '@icon-park/vue-next';
+import { useMusicStore } from '../../stores/songinfo.js';
+
+const store = useMusicStore();
+
 const route = useRoute();
 const id = route.params.id;
 //歌曲信息
@@ -72,6 +76,9 @@ const songData = ref([])
 let lyricData = ref([])
 //评论信息
 const commentData = ref([]);
+//歌曲播放
+const playData = ref([]);
+
 console.log(id);
 
 // 将毫秒数转换为 mm:ss 格式
@@ -101,6 +108,7 @@ onMounted(async () => {
                     artist
                 }
                 songData.value = songObject
+                store.setSongData(songData.value)
             });
             // console.log(res.data.songs);
             // console.log("songData",songData.value);
@@ -112,8 +120,6 @@ onMounted(async () => {
     const getLyric = await axios.get(`http://localhost:3000/lyric/new?id=${id}`)
         .then((res) => {
             lyricData.value = res.data.lrc.lyric
-            console.log("lyricData", lyricData.value, typeof lyricData.value);
-            console.log(res);
         })
         .catch((err) => {
             console.log(err);
@@ -128,7 +134,21 @@ onMounted(async () => {
                 hotcomments,
             };
             commentData.value.push(commentObject);
-            console.log("commentData", commentData.value);
+        })
+        .catch((err) => {
+            console.log(err);
+        })
+    //获取歌曲url
+    const getSongUrl = await axios.get(`http://localhost:3000/song/url?id=${id}`)
+        .then((res) => {
+            const url = res.data.data[0].url
+            const time = res.data.data[0].time
+            const songObject = {
+                url,
+                time
+            }
+            playData.value = songObject
+            store.setPlayData(playData.value)
             console.log(res);
         })
         .catch((err) => {

@@ -11,7 +11,8 @@ import {install} from '@icon-park/vue-next/es/all';
 import '@icon-park/vue-next/styles/index.css';
 
 const app = createApp(App)
-app.use(ElementPlus).use(router).use(pinia)
+app.use(ElementPlus).use(router)
+app.use(pinia)
 
 for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
     app.component(key, component)
