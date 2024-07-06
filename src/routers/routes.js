@@ -19,10 +19,16 @@ const routes = [
         component: () => import('../pages/Singer/SingerIndex.vue'),
     },
     {
-        path: '/song/:id',
-        name: 'Song',
-        title: '歌曲',
+        path: '/songlist/:id',
+        name: 'SongListDetail',
+        title: '歌单列表',
         component: () => import('../pages/SongList/SongPage.vue'),
+    },
+    {
+        path: '/songinfopage/:id',
+        name: 'SongInfoPage',
+        title: '歌曲详情',
+        component: () => import('../pages/Song/SongInfoPage.vue'),
     }
 ]
 

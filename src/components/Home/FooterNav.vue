@@ -37,8 +37,8 @@
       <div class="flex-1 flex items-center justify-end">
         <!--歌曲列表，音量-->
         <div class="relative flex flex-col items-center" @mouseleave="handleMouseLeave" @mouseenter="handleMouseEnter">
-          <div v-show="showSlider" class="absolute top-[-150px] right-[2px] bg-gray-400 rounded-lg px-2 py-4 shadow-lg ">
-            <el-slider class="relative animate-in fade-in zoom-in duration-300" v-model="VolumeSize" vertical
+          <div v-show="showSlider" class="absolute top-[-150px] right-[2px] bg-white rounded-lg px-2 py-4 shadow-lg ">
+            <el-slider class="relative animate-in fade-in zoom-in duration-300" v-model="VolumeSize" vertical size="small"
               height="100px" />
           </div>
           <volume-small class="mr-3 relative" theme="outline" size="25" fill="#333" @mouseover="showSlider = true" />

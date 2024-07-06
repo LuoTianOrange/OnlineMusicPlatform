@@ -19,7 +19,7 @@ const router = useRouter();
 const hasNavigated = ref(false);
 const goToSongPage = (songData) => {
   songListStore.setSongListData(songData)
-  router.push({ name: 'Song', params: { id: props.Playlists.id } }).then(() => {
+  router.push({ name: 'SongListDetail', params: { id: props.Playlists.id } }).then(() => {
     if (!hasNavigated.value) {
       hasNavigated.value = true;
       newLink();
